@@ -1,0 +1,2 @@
+/usr/bin/ar qc libedline.a  CMakeFiles/edline.dir/edlines/edlines.cpp.o
+/usr/bin/ranlib libedline.a

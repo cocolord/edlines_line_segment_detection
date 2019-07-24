@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/edlines.dir/test.cpp.o  -o edlines libedline.a 

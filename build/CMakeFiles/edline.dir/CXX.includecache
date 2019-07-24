@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dong/Downloads/line_detector-master/edlines/edlines.cpp
+edlines.h
+/home/dong/Downloads/line_detector-master/edlines/edlines.h
+list
+-
+array
+-
+
+/home/dong/Downloads/line_detector-master/edlines/edlines.h
+vector
+-
+cmath
+-
+stdint.h
+-
+string.h
+-
+float.h
+-
+

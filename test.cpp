@@ -22,9 +22,7 @@ int main()
     src.seekg(0, src.end);
 	int length = src.tellg();
 	src.seekg(0, src.beg);
-
     src.read((char *)(pBuf),pWidth*pHeight);   
-	src.close();
 	// for(int i = 0;i<pWidth*pHeight;i++) std::cout<<pBuf[i]<<" ";
 	int flag = EdgeDrawingLineDetector(pBuf,pWidth,pHeight,1.0,1.0,bbox,lines);
 	std::cout<<lines.size()<<std::endl;

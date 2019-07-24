@@ -40,6 +40,9 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "utility": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "complex": "cpp",
+        "deque": "cpp",
+        "numeric": "cpp"
     }
 }
