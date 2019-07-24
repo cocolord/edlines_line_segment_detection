@@ -1740,7 +1740,7 @@ int EDLineDetector::EdgeDrawing(image_int8u_p image, EdgeChains &edgeChains, boo
 	}
 	if (offsetPFirst>edgePixelArraySize || offsetPSecond>edgePixelArraySize){
 		printf("Edge drawing Error: The total number of edge pixels is larger than MaxNumOfEdgePixels, "
-			"numofedgePixel1 = &d,  numofedgePixel2 = %d, MaxNumOfEdgePixel = %d\n", offsetPFirst, offsetPSecond, edgePixelArraySize);
+			"numofedgePixel1 = %d,  numofedgePixel2 = %d, MaxNumOfEdgePixel = %d\n", offsetPFirst, offsetPSecond, edgePixelArraySize);
 		return 1;
 	}
 
@@ -2327,8 +2327,8 @@ LineDescriptor::LineDescriptor(unsigned int numOfBand, unsigned int widthOfBand)
 
 LineDescriptor::~LineDescriptor(){
 
-	if ((edLineVec_[ZERO]->imageWidth != NULL) && (edLineVec_[ZERO]->imageHeight != NULL))
-	if (edLineVec_[ZERO] != NULL){
+	if ((edLineVec_[ZERO]->imageWidth != 0) && (edLineVec_[ZERO]->imageHeight != 0))
+	if (edLineVec_[ZERO] != 0){
 		delete edLineVec_[ZERO];
 	}
 
