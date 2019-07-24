@@ -29,9 +29,9 @@ int main()
     // free(pBuf);
     cv::Mat image;
     // double 
-	image = cv::imread("3.bmp");
+	image = cv::imread("pic/3.bmp");
     // cv::imshow("img",image);
-	cv::Mat gray_image = cv::imread("2.png");
+	cv::Mat gray_image = cv::imread("pic/2.png");
     cv::Mat temp;
 	cv::cvtColor(image, gray_image, CV_BGR2GRAY);
     // cv::resize(gray_image,temp,cv::Size(512,384));

@@ -1226,7 +1226,15 @@ int EDLineDetector::EdgeDrawing(image_int8u_p image, EdgeChains &edgeChains, boo
 		if (pEdgeImg[indexInArray]){//if anchor i is already been an edge pixel.
 			continue;
 		}
-
+		/*The walk stops under 3 conditions:
+		 * 1. We move out of the edge areas, i.e., the thresholded gradient value
+		 *    of the current pixel is 0.
+		 * 2. The current direction of the edge changes, i.e., from horizontal
+		 *    to vertical or vice versa.?? (This is turned out not correct. From the online edge draw demo
+		 *    we can figure out that authors don't implement this rule either because their extracted edge
+		 *    chain could be a circle which means pixel directions would definitely be different
+		 *    in somewhere on the chain.)
+		 * 3. We encounter a previously detected edge pixel. */
 		pFirstPartEdgeS_[offsetPS] = offsetPFirst;
 		if (pdirImg[indexInArray] == Horizontal){//if the direction of this pixel is horizontal, then go left and right.
 			//fist go right, pixel direction may be different during linking.
