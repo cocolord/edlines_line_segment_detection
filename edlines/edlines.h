@@ -7,10 +7,10 @@
 #include<stdint.h>
 #include<string.h>
 #include<float.h>
-//#include "image_defines.h"
-//#ifdef __cplusplus
-//extern "C" {
-//#endif
+// #include "image_defines.h"
+// #ifdef __cplusplus
+// extern "C" {
+// #endif
 
 
 typedef struct

@@ -27,5 +27,11 @@ int __EdgeDrawingLineDetector__(unsigned char *src, int w, int h,float scaleX, s
 #
 To do list:
 1. DSP中的sobel函数替换源代码中的sobel函数
-2. 车道线检测中所有opencv函数替换
-3. 输入图像已经改成了一维数组
+2. Resize 函数
+3. 三通道转换函数
+
+
+
+
+Finished List:
+1. 图像流已经换成了一维数组
