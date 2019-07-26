@@ -7,7 +7,7 @@
 #include<stdint.h>
 #include<string.h>
 #include<float.h>
-#include "/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h"
+#include "../c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h"
 
 // #include "image_defines.h"
 // #ifdef __cplusplus

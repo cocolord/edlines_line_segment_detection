@@ -709,25 +709,25 @@ static void sobel_edge(ORIENT_CODE oriention, image_int8u_p src, image_int16s_p 
 
 static void mcv_sobel(ORIENT_CODE oriention, image_int8u_p src, image_int16s_p dst)
 {
-	// /* Use Sobel function on DSP */
-	// uint32_t out_size = src->xsize * (src->ysize-2);
-	// int16_t   *dst_x_cn =  (int16_t *) malloc(out_size * sizeof(int16_t));
-	// int16_t   *dst_y_cn =  (int16_t *) malloc(out_size * sizeof(int16_t));
-	// VXLIB_bufParams2D_t dst_addr_x; 
-	// dst_addr_x.dim_x = src->xsize;
-	// dst_addr_x.dim_y = src->ysize;
-	// dst_addr_x.stride_y = src->xsize * 2;
-	// dst_addr_x.data_type = VXLIB_INT16;
-	// VXLIB_bufParams2D_t dst_addr_y = dst_addr_x;
-	// VXLIB_bufParams2D_t src_addr = {4,src->xsize,src->ysize,src->xsize};
-	// VXLIB_sobel_3x3_i8u_o16s_o16s_cn(src->data,&src_addr,dst_x_cn,&dst_addr_x,dst_y_cn,&dst_addr_y);
+	/* Use Sobel function on DSP */
+	uint32_t out_size = src->xsize * (src->ysize-2);
+	int16_t   *dst_x_cn =  (int16_t *) malloc(out_size * sizeof(int16_t));
+	int16_t   *dst_y_cn =  (int16_t *) malloc(out_size * sizeof(int16_t));
+	VXLIB_bufParams2D_t dst_addr_x; 
+	dst_addr_x.dim_x = src->xsize;
+	dst_addr_x.dim_y = src->ysize;
+	dst_addr_x.stride_y = src->xsize * 2;
+	dst_addr_x.data_type = VXLIB_INT16;
+	VXLIB_bufParams2D_t dst_addr_y = dst_addr_x;
+	VXLIB_bufParams2D_t src_addr = {4,src->xsize,src->ysize,src->xsize};
+	VXLIB_sobel_3x3_i8u_o16s_o16s_cn(src->data,&src_addr,dst_x_cn,&dst_addr_x,dst_y_cn,&dst_addr_y);
 
-	// //return params dst
+	//return params dst
 
 
-	// /* Use Sobel function on DSP */
+	/* Use Sobel function on DSP */
 
-	sobel_edge(oriention, src, dst);
+	// sobel_edge(oriention, src, dst);
 }
 
 static void array_abs(image_int16s_p src, image_int16s_p dst)

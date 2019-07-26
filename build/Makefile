@@ -136,6 +136,33 @@ edline/fast:
 	$(MAKE) -f CMakeFiles/edline.dir/build.make CMakeFiles/edline.dir/build
 .PHONY : edline/fast
 
+c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.o: c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o
+
+.PHONY : c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.o
+
+# target to build an object file
+c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o:
+	$(MAKE) -f CMakeFiles/edline.dir/build.make CMakeFiles/edline.dir/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o
+.PHONY : c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o
+
+c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.i: c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.i
+
+.PHONY : c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.i
+
+# target to preprocess a source file
+c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.i:
+	$(MAKE) -f CMakeFiles/edline.dir/build.make CMakeFiles/edline.dir/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.i
+.PHONY : c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.i
+
+c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.s: c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.s
+
+.PHONY : c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.s
+
+# target to generate assembly for a file
+c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.s:
+	$(MAKE) -f CMakeFiles/edline.dir/build.make CMakeFiles/edline.dir/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.s
+.PHONY : c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.s
+
 edlines/edlines.o: edlines/edlines.cpp.o
 
 .PHONY : edlines/edlines.o
@@ -162,33 +189,6 @@ edlines/edlines.s: edlines/edlines.cpp.s
 edlines/edlines.cpp.s:
 	$(MAKE) -f CMakeFiles/edline.dir/build.make CMakeFiles/edline.dir/edlines/edlines.cpp.s
 .PHONY : edlines/edlines.cpp.s
-
-home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.o: home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o
-
-.PHONY : home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.o
-
-# target to build an object file
-home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o:
-	$(MAKE) -f CMakeFiles/edline.dir/build.make CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o
-.PHONY : home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o
-
-home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.i: home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.i
-
-.PHONY : home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.i
-
-# target to preprocess a source file
-home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.i:
-	$(MAKE) -f CMakeFiles/edline.dir/build.make CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.i
-.PHONY : home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.i
-
-home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.s: home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.s
-
-.PHONY : home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.s
-
-# target to generate assembly for a file
-home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.s:
-	$(MAKE) -f CMakeFiles/edline.dir/build.make CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.s
-.PHONY : home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.s
 
 test.o: test.cpp.o
 
@@ -227,12 +227,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edlines"
 	@echo "... edline"
+	@echo "... c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.o"
+	@echo "... c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.i"
+	@echo "... c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.s"
 	@echo "... edlines/edlines.o"
 	@echo "... edlines/edlines.i"
 	@echo "... edlines/edlines.s"
-	@echo "... home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.o"
-	@echo "... home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.i"
-	@echo "... home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"

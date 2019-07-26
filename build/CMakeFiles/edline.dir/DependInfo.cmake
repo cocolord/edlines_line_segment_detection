@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c" "/home/dong/Downloads/line_detector-master/build/CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o"
+  "/home/dong/Downloads/line_detector-master/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c" "/home/dong/Downloads/line_detector-master/build/CMakeFiles/edline.dir/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
