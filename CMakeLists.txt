@@ -2,12 +2,20 @@ cmake_minimum_required(VERSION 3.5)
 project(edlines)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/edlines)
-add_definitions(-std=c++14)
+add_definitions(-std=c++14 -O3)
 
-file(GLOB src "${CMAKE_CURRENT_SOURCE_DIR}/edlines/*.cpp")
-add_library(edline STATIC ${src}
-    "/usr/local/lib"
+file(GLOB src "${CMAKE_CURRENT_SOURCE_DIR}/edlines/*.cpp"
+            #   "/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/c66/*.c"
 )
+
+add_library(edline STATIC ${src}
+    "/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx"
+    "/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/common"
+    "${CMAKE_CURRENT_SOURCE_DIR}/edlines"
+    "/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/common/c6xsim"
+)
+
+
 add_executable(edlines ${CMAKE_CURRENT_SOURCE_DIR}/test.cpp)
 target_link_libraries(edlines
     edline

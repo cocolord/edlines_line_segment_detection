@@ -43,6 +43,7 @@
         "iostream": "cpp",
         "complex": "cpp",
         "deque": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "cstdarg": "cpp"
     }
 }

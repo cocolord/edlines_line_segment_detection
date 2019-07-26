@@ -25,6 +25,8 @@ iostream
 -
 cstdint
 -
+chrono
+-
 opencv2/core.hpp
 -
 opencv2/imgproc.hpp
