@@ -3,4 +3,7 @@
 
 CMakeFiles/edlines.dir/test.cpp.o: ../edlines/edlines.h
 CMakeFiles/edlines.dir/test.cpp.o: ../test.cpp
+CMakeFiles/edlines.dir/test.cpp.o: /home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/common/VXLIB_bufParams.h
+CMakeFiles/edlines.dir/test.cpp.o: /home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/common/VXLIB_types.h
+CMakeFiles/edlines.dir/test.cpp.o: /home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h
 

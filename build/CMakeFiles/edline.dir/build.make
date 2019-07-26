@@ -81,17 +81,43 @@ CMakeFiles/edline.dir/edlines/edlines.cpp.o.provides: CMakeFiles/edline.dir/edli
 CMakeFiles/edline.dir/edlines/edlines.cpp.o.provides.build: CMakeFiles/edline.dir/edlines/edlines.cpp.o
 
 
+CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o: CMakeFiles/edline.dir/flags.make
+CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o: /home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dong/Downloads/line_detector-master/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o   -c /home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c
+
+CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c > CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.i
+
+CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c -o CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.s
+
+CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o.requires:
+
+.PHONY : CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o.requires
+
+CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o.provides: CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o.requires
+	$(MAKE) -f CMakeFiles/edline.dir/build.make CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o.provides.build
+.PHONY : CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o.provides
+
+CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o.provides.build: CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o
+
+
 # Object files for target edline
 edline_OBJECTS = \
-"CMakeFiles/edline.dir/edlines/edlines.cpp.o"
+"CMakeFiles/edline.dir/edlines/edlines.cpp.o" \
+"CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o"
 
 # External object files for target edline
 edline_EXTERNAL_OBJECTS =
 
 libedline.a: CMakeFiles/edline.dir/edlines/edlines.cpp.o
+libedline.a: CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o
 libedline.a: CMakeFiles/edline.dir/build.make
 libedline.a: CMakeFiles/edline.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dong/Downloads/line_detector-master/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libedline.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dong/Downloads/line_detector-master/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libedline.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/edline.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/edline.dir/link.txt --verbose=$(VERBOSE)
 
@@ -101,6 +127,7 @@ CMakeFiles/edline.dir/build: libedline.a
 .PHONY : CMakeFiles/edline.dir/build
 
 CMakeFiles/edline.dir/requires: CMakeFiles/edline.dir/edlines/edlines.cpp.o.requires
+CMakeFiles/edline.dir/requires: CMakeFiles/edline.dir/home/dong/PROCESSOR_SDK_VISION_03_06_00_00/ti_components/algorithms/vxlib_c66x_1_1_3_0/packages/ti/vxlib/src/vx/VXLIB_sobel_3x3_i8u_o16s_o16s/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o.requires
 
 .PHONY : CMakeFiles/edline.dir/requires
 
