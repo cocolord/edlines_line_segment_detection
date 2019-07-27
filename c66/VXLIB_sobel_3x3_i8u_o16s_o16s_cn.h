@@ -78,8 +78,8 @@
 **+--------------------------------------------------------------------------+**
 *******************************************************************************/
 
-#ifndef VXLIB_SOBEL_3X3_I8U_O16S_O16S_CN_H_
-#define VXLIB_SOBEL_3X3_I8U_O16S_O16S_CN_H_ 1
+// #ifndef VXLIB_SOBEL_3X3_I8U_O16S_O16S_CN_H_
+// #define VXLIB_SOBEL_3X3_I8U_O16S_O16S_CN_H_ 1
 
 #include "VXLIB_types.h"
 
@@ -97,5 +97,5 @@ VXLIB_STATUS    VXLIB_sobel_3x3_i8u_o16s_o16s_checkParams_cn(uint8_t src[],
                                                  int16_t dst_y[],
                                                  VXLIB_bufParams2D_t * dst_y_addr);
 
-#endif
+//#endif
 

@@ -3,7 +3,7 @@
 
 #include <list>
 #include <array>
-
+#include "../c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h"
 using namespace std;
 
 
@@ -710,22 +710,49 @@ static void sobel_edge(ORIENT_CODE oriention, image_int8u_p src, image_int16s_p 
 static void mcv_sobel(ORIENT_CODE oriention, image_int8u_p src, image_int16s_p dst)
 {
 	/* Use Sobel function on DSP */
-	uint32_t out_size = src->xsize * (src->ysize-2);
+	
+	uint32_t out_size = src->xsize   * (src->ysize-2);
 	int16_t   *dst_x_cn =  (int16_t *) malloc(out_size * sizeof(int16_t));
 	int16_t   *dst_y_cn =  (int16_t *) malloc(out_size * sizeof(int16_t));
-	VXLIB_bufParams2D_t dst_addr_x; 
+	VXLIB_bufParams2D_t dst_addr_x,src_addr,dst_addr_y; 
+	dst_addr_x.data_type = VXLIB_UINT16;
 	dst_addr_x.dim_x = src->xsize;
-	dst_addr_x.dim_y = src->ysize;
-	dst_addr_x.stride_y = src->xsize * 2;
-	dst_addr_x.data_type = VXLIB_INT16;
-	VXLIB_bufParams2D_t dst_addr_y = dst_addr_x;
-	VXLIB_bufParams2D_t src_addr = {4,src->xsize,src->ysize,src->xsize};
-	VXLIB_sobel_3x3_i8u_o16s_o16s_cn(src->data,&src_addr,dst_x_cn,&dst_addr_x,dst_y_cn,&dst_addr_y);
+	dst_addr_x.dim_y = src->ysize - 2;
+	dst_addr_x.stride_y = (int)src->xsize * 2;
+
+	dst_addr_y.data_type = VXLIB_UINT16;
+	dst_addr_y.dim_x = src->xsize;
+	dst_addr_y.dim_y = src->ysize - 2;
+	dst_addr_y.stride_y = (int)src->xsize * 2;
+
+	src_addr.data_type = VXLIB_UINT8;
+	src_addr.dim_x = src->xsize;
+	src_addr.dim_y=src->ysize;
+	src_addr.stride_y=(int)src->xsize;
+
+	VXLIB_STATUS status = VXLIB_sobel_3x3_i8u_o16s_o16s_cn(src->data,&src_addr,dst_x_cn,&dst_addr_x,dst_y_cn,&dst_addr_y);
 
 	//return params dst
 
-
+	switch (oriention)
+	{
+	case ORIENT_HORIZONAL:
+		//copy dst_x_cn to  dst
+		dst->data = dst_x_cn;
+		dst->xsize = dst_addr_x.dim_x;
+		dst->ysize = dst_addr_x.dim_y;
+		break;
+	
+	case  ORIENT_VERTICAL:
+		//copy dst_y_cn to  dst
+		dst->data = dst_y_cn;
+		dst->xsize = dst_addr_y.dim_x;
+		dst->ysize = dst_addr_y.dim_y;
+		break;
+	}
 	/* Use Sobel function on DSP */
+
+
 
 	// sobel_edge(oriention, src, dst);
 }

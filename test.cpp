@@ -88,9 +88,9 @@ int main()
     cv::Mat image;
 	image = cv::imread("/home/dong/Downloads/line_detector-master/2019-05-06_10-55-52_00016509.bmp");
 	// cv::cvtColor(image, gray_image, CV_BGR2GRAY);
-	int W = image.cols;
-	int H = image.rows;
-	int image_size = W * H  * 0.5 * 0.5;
+	int W = image.cols *0.5;
+	int H = image.rows *0.5;
+	int image_size = W * H ;
 	//resize 
 	unsigned char* input = new unsigned char[image_size];
 	cv::Mat temp;
@@ -104,14 +104,14 @@ int main()
 	std::vector<line_float_t> Lines;
 	//左上角是坐标原点
 	//用法和cv::rect一样
-	boundingbox_t Bbox = { 0,100,W*0.5,H*0.5-100 };
+	boundingbox_t Bbox = { 0,100,W,H-100 };
 	float scalex =1.0;
 	float scaley =1.0;
 	int Flag = 0;
 	//Run Edline
 	int64_t cycle_us = 1e6 / 34;
 	auto start = std::chrono::high_resolution_clock::now();
-    Flag = EdgeDrawingLineDetector(input,W*0.5,H*0.5,scalex,scaley,Bbox,Lines);
+    Flag = EdgeDrawingLineDetector(input,W,H,scalex,scaley,Bbox,Lines);
 	auto elapsed_0 = std::chrono::high_resolution_clock::now() - start;
 	int64_t microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
 	cout<<"detect:"<<microseconds_0/1000.0<<"ms "<<endl;
