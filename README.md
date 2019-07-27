@@ -26,12 +26,13 @@ int __EdgeDrawingLineDetector__(unsigned char *src, int w, int h,float scaleX, s
 
 #
 To do list:
-1. DSP中的sobel函数替换源代码中的sobel函数
-2. Resize 函数
-3. 三通道转换函数
-
+1. C++ STL 用标准C替换
+2. array 是一定要替换的
+3. 在ccs 上测试
 
 
 
 Finished List:
 1. 图像流已经换成了一维数组
+
+2. DSP中的sobel函数替换源代码中的sobel函数
