@@ -2897,8 +2897,9 @@ int _edge_drawing_line_detector(unsigned char *src, int w, int h,
 
 	for (k = 0; k < lineVec.size();k++)
 	{
-		lines.push_back({ lineVec[k][0].startPointX, lineVec[k][0].startPointY,
-			lineVec[k][0].endPointX, lineVec[k][0].endPointY });
+		line_float_t temp = {lineVec[k][0].startPointX, lineVec[k][0].startPointY,
+			lineVec[k][0].endPointX, lineVec[k][0].endPointY };
+		lines.push_back(temp);
 	}
 
 	lineVec.clear();
