@@ -48,7 +48,7 @@ typedef struct
 
 */
 int EdgeDrawingLineDetector(unsigned char *src, int w, int h,
-	float scaleX, float scaleY, boundingbox_t bbox, std::vector<line_float_t> &lines);
+	float scaleX, float scaleY, boundingbox_t bbox, line_float_t** lines_buf);
 
 
 //

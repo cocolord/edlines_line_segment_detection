@@ -1,6 +1,6 @@
 
 #include "edlines.h"
-
+#include<iostream>
 #include <list>
 #include "../array/Array.h"
 #include "../c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h"
@@ -2923,8 +2923,9 @@ int _edge_drawing_line_detector(unsigned char *src, int w, int h,
 
 */
 int EdgeDrawingLineDetector(unsigned char *src, int w, int h,
-	float scaleX, float scaleY, boundingbox_t bbox, std::vector<line_float_t> &lines)
+	float scaleX, float scaleY, boundingbox_t bbox, line_float_t** lines_buf)
 {
+	std::vector<line_float_t> lines;
 	if (src == NULL)
 		return 1;
 
@@ -2936,6 +2937,10 @@ int EdgeDrawingLineDetector(unsigned char *src, int w, int h,
 		|| bbox.x + bbox.width > w || bbox.y + bbox.height > h)
 		return 1;
 	
-	return _edge_drawing_line_detector(src, w, h,
+	int flag = _edge_drawing_line_detector(src, w, h,
 		scaleX, scaleY, bbox, lines);
+	*lines_buf = (line_float_t *) malloc(sizeof(line_float_t)*lines.size());
+	for(int i = 0;i<lines.size();i++) (*lines_buf)[i] = lines[i];
+	for(int i = 0;i<lines.size();i++) std::cout<<(*lines_buf)[i].endx;
+	return flag;
 }

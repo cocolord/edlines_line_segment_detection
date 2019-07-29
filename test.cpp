@@ -1,15 +1,16 @@
 #include <fstream>
 #include <iostream>
 // #include <cstdint>
-// #include<chrono>
+#include<chrono>
 #include<opencv2/core.hpp>
 #include<opencv2/imgproc.hpp>
 #include<opencv2/imgcodecs.hpp>
 #include<opencv2/highgui.hpp>
-// #include <opencv2/line_descriptor.hpp>
+#include <opencv2/line_descriptor.hpp>
 #include "edlines.h"
 #include "array/Array.h"
 
+#define MAX_LINE_BUFFER_SIZE 500
 int pWidth = 1024;
 int pHeight = 768;
 int scaleX = 1,scaleY = 1;
@@ -28,8 +29,8 @@ int main()
 	// unsigned char header[54];
     // unsigned char color_table[1024];
 	// pBuf = (unsigned char*) malloc(pWidth*pHeight*sizeof(unsigned char));
-	// FILE *infile = fopen("/home/dong/Downloads/line_detector-master/2019-05-06_10-55-52_00016509.bmp","rb");
-	// FILE *outfile = fopen("/home/dong/Downloads/line_detector-master/testg.bmp","wb");
+	// FILE *infile = fopen("2019-05-06_10-55-52_00016509.bmp","rb");
+	// FILE *outfile = fopen("test.bmp","wb");
 
 	// if(infile == NULL){ // Check if file open was successful
     //     printf("File cannot be opened.\n");
@@ -59,7 +60,7 @@ int main()
 	// 	for(int i = 0;i<size;i++)
 	// 		pBuf[i]=img[i].r;
 	// 	cout<<"size "<< size<<endl;
-	// 	cout<<"size of pBuf"<<strlen(pBuf)<<endl;
+	// 	// cout<<"size of pBuf"<<strlen(pBuf)<<endl;
 	// 	// header[28] = 8;
 	// 	fwrite(&header,sizeof(header),1,outfile);
 	// 	//转灰度图之后缺少一个调色板文件
@@ -69,11 +70,11 @@ int main()
 	// cout<<"size of uchar"<<sizeof(unsigned char)<<endl;
     // boundingbox_t bbox = {0, 0,width,height};
 	// int64_t cycle_us = 1e6 / 34;
-	// auto start = std::chrono::high_resolution_clock::now();
+	// // auto start = std::chrono::high_resolution_clock::now();
 	// int flag = EdgeDrawingLineDetector(pBuf,width,height,1.0,1.0,bbox,lines);
-	// auto elapsed_0 = std::chrono::high_resolution_clock::now() - start;
-	// int64_t microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
-	// cout<<"detect:"<<microseconds_0/1000.0<<"ms "<<endl;
+	// // auto elapsed_0 = std::chrono::high_resolution_clock::now() - start;
+	// // int64_t microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
+	// // cout<<"detect:"<<microseconds_0/1000.0<<"ms "<<endl;
 
 	// std::cout<<lines.size()<<std::endl;
 	// //0:ok; 1:error;
@@ -110,18 +111,19 @@ int main()
 	int Flag = 0;
 	//Run Edline
 	int64_t cycle_us = 1e6 / 34;
-	// auto start = std::chrono::high_resolution_clock::now();
-    Flag = EdgeDrawingLineDetector(input,W,H,scalex,scaley,Bbox,Lines);
-	// auto elapsed_0 = std::chrono::high_resolution_clock::now() - start;
-	// int64_t microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
-	// cout<<"detect:"<<microseconds_0/1000.0<<"ms "<<endl;
+	auto start = std::chrono::high_resolution_clock::now();
+	line_float_t *lines_buf = NULL;/*[MAX_LINE_BUFFER_SIZE];*/
+    Flag = EdgeDrawingLineDetector(input,W,H,scalex,scaley,Bbox,&lines_buf);
+	auto elapsed_0 = std::chrono::high_resolution_clock::now() - start;
+	int64_t microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
+	cout<<"detect:"<<microseconds_0/1000.0<<"ms "<<endl;
 	std::cout << Flag << std::endl;
-	for (int i = 0; i < Lines.size(); i++)
+	for (int i = 0; i < sizeof(lines_buf)/sizeof(line_float_t); i++)
 	{
-		cv::line(temp, cv::Point(Lines[i].startx, Lines[i].starty), cv::Point(Lines[i].endx, Lines[i].endy), cv::Scalar(0, 0, 255), 2);
+		cv::line(temp, cv::Point(lines_buf[i].startx, lines_buf[i].starty), cv::Point(lines_buf[i].endx, lines_buf[i].endy), cv::Scalar(0, 0, 255), 2);
 	}
 	cv::imshow("image1", temp);
-	std::cout<<Lines.size()<<std::endl;
+	std::cout<<"lines buf size"<<sizeof(lines_buf)/sizeof(lines_buf[0])<<std::endl;
 	cv::waitKey(0);
 	return 0;
 	/* opencv 测试*/
