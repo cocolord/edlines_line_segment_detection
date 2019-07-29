@@ -2,7 +2,7 @@
 #include "edlines.h"
 
 #include <list>
-#include <array>
+#include "../array/Array.h"
 #include "../c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h"
 using namespace std;
 
@@ -140,6 +140,8 @@ struct SingleLineInfo
 };
 
 // Specifies a vector of lines.
+
+//用结构题数组代替
 typedef std::vector<SingleLineInfo> LineSet;
 
 typedef std::vector<LineSet> ScaleLineSet;//each element in ScaleLineSet is a vector of lines which corresponds the same line detected in different scaled images.
@@ -315,9 +317,9 @@ public:
 
 	LineChains lines_; //store the detected line chains;
 	//store the line Equation coefficients, vec3=[w1,w2,w3] for line w1*x + w2*y + w3=0;
-	std::vector<std::array<float, 3> > lineEquations_;
+	std::vector<Array<float, 3> > lineEquations_;
 	//store the line endpoints, [x1,y1,x2,y3]
-	std::vector<std::array<float, 4> > lineEndpoints_;
+	std::vector<Array<float, 4> > lineEndpoints_;
 	//store the line direction
 	std::vector<float>  lineDirection_;
 	//store the line salience, which is the summation of gradients of pixels on line
@@ -335,7 +337,7 @@ private:
 	*return:  line fit error; 1:error happens;
 	*/
 	float LeastSquaresLineFit_(unsigned int *xCors, unsigned int *yCors,
-		unsigned int offsetS, std::array<float, 2> &lineEquation);
+		unsigned int offsetS, Array<float, 2> &lineEquation);
 	/*For an input pixel chain, find the best fit line. Only do the update based on new points.
 	*For A*x=v,  Least square estimation of x = Inv(A^T * A) * (A^T * v);
 	*If some new observations are added, i.e, [A; A'] * x = [v; v'],
@@ -350,14 +352,14 @@ private:
 	*/
 	float LeastSquaresLineFit_(unsigned int *xCors, unsigned int *yCors,
 		unsigned int offsetS, unsigned int newOffsetS,
-		unsigned int offsetE, std::array<float, 2> &lineEquation);
+		unsigned int offsetE, Array<float, 2> &lineEquation);
 	/* Validate line based on the Helmholtz principle, which basically states that
 	* for a structure to be perceptually meaningful, the expectation of this structure
 	* by chance must be very low.
 	*/
 	bool LineValidation_(unsigned int *xCors, unsigned int *yCors,
 		unsigned int offsetS, unsigned int offsetE,
-		std::array<float, 3> &lineEquation, float &direction);
+		Array<float, 3> &lineEquation, float &direction);
 
 
 private:
@@ -1849,7 +1851,7 @@ int EDLineDetector::EDline(image_int8u_p image, LineChains &lines, bool smoothed
 	unsigned int *pLineSID = lines.sId.data();
 	logNT_ = 2.f * (log10((float)imageWidth) + log10((float)imageHeight));
 	float lineFitErr;//the line fit error;
-	std::array<float, 2> lineEquation;
+	Array<float, 2> lineEquation;
 	lineEquations_.clear();
 	lineEndpoints_.clear();
 	lineDirection_.clear();
@@ -1934,13 +1936,17 @@ int EDLineDetector::EDline(image_int8u_p image, LineChains &lines, bool smoothed
 					}
 				}
 				//the line equation coefficients,for line w1x+w2y+w3 =0, we normalize it to make w1^2+w2^2 = 1.
-				std::array<float, 3> lineEqu = { lineEquation[0] * coef1, -1 * coef1, lineEquation[1] * coef1 };
+				Array<float, 3> lineEqu;
+				lineEqu.push_back(lineEquation[0] * coef1);
+				lineEqu.push_back(-1 * coef1);
+				lineEqu.push_back(lineEquation[1] * coef1);
+				//Array<float, 3> lineEqu= { lineEquation[0] * coef1, -1 * coef1, lineEquation[1] * coef1 };
 				if (LineValidation_(pLineXCors, pLineYCors, pLineSID[numOfLines], offsetInLineArray, lineEqu, direction))
 				{//check the line
 					//store the line equation coefficients
 					lineEquations_.push_back(lineEqu);
 
-					std::array<float, 4> lineEndP;//line endpoints
+					Array<float, 4> lineEndP;//line endpoints
 					float a1 = lineEqu[1] * lineEqu[1];
 					float a2 = lineEqu[0] * lineEqu[0];
 					float a3 = lineEqu[0] * lineEqu[1];
@@ -2009,13 +2015,17 @@ int EDLineDetector::EDline(image_int8u_p image, LineChains &lines, bool smoothed
 					}
 				}
 				//the line equation coefficients,for line w1x+w2y+w3 =0, we normalize it to make w1^2+w2^2 = 1.
-				std::array<float, 3> lineEqu = { 1 * coef1, -lineEquation[0] * coef1, -lineEquation[1] * coef1 };
+				//Array<float, 3> lineEqu = { 1 * coef1, -lineEquation[0] * coef1, -lineEquation[1] * coef1 };
+				Array<float, 3> lineEqu;
+				lineEqu.push_back(1 * coef1);
+				lineEqu.push_back(-lineEquation[0] * coef1);
+				lineEqu.push_back(-lineEquation[1] * coef1);
 				if (LineValidation_(pLineXCors, pLineYCors, pLineSID[numOfLines], offsetInLineArray, lineEqu, direction))
 				{//check the line
 					//store the line equation coefficients
 					lineEquations_.push_back(lineEqu);
 
-					std::array<float, 4> lineEndP;//line endpoints
+					Array<float, 4> lineEndP;//line endpoints
 					float a1 = lineEqu[1] * lineEqu[1];
 					float a2 = lineEqu[0] * lineEqu[0];
 					float a3 = lineEqu[0] * lineEqu[1];
@@ -2050,7 +2060,7 @@ int EDLineDetector::EDline(image_int8u_p image, LineChains &lines, bool smoothed
 
 
 float EDLineDetector::LeastSquaresLineFit_(unsigned int *xCors, unsigned int *yCors,
-	unsigned int offsetS, std::array<float, 2> &lineEquation)
+	unsigned int offsetS, Array<float, 2> &lineEquation)
 {
 	if (lineEquation.size() != 2){
 		printf("SHOULD NOT BE != 2\n");
@@ -2131,7 +2141,7 @@ float EDLineDetector::LeastSquaresLineFit_(unsigned int *xCors, unsigned int *yC
 }
 float EDLineDetector::LeastSquaresLineFit_(unsigned int *xCors, unsigned int *yCors,
 	unsigned int offsetS, unsigned int newOffsetS,
-	unsigned int offsetE, std::array<float, 2> &lineEquation)
+	unsigned int offsetE, Array<float, 2> &lineEquation)
 {
 	int length = offsetE - offsetS;
 	int newLength = offsetE - newOffsetS;
@@ -2217,7 +2227,7 @@ _END:
 
 bool EDLineDetector::LineValidation_(unsigned int *xCors, unsigned int *yCors,
 	unsigned int offsetS, unsigned int offsetE,
-	std::array<float, 3> &lineEquation, float &direction)
+	Array<float, 3> &lineEquation, float &direction)
 {
 	if (bValidate_){
 		int n = offsetE - offsetS;
@@ -2924,7 +2934,7 @@ int EdgeDrawingLineDetector(unsigned char *src, int w, int h,
 		|| bbox.width <= 0 || bbox.height <= 0
 		|| bbox.x + bbox.width > w || bbox.y + bbox.height > h)
 		return 1;
-
+	
 	return _edge_drawing_line_detector(src, w, h,
 		scaleX, scaleY, bbox, lines);
 }

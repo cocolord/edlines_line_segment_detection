@@ -7,6 +7,8 @@ CMakeFiles/edline.dir/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o
  /home/dong/Downloads/line_detector-master/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h
  /home/dong/Downloads/line_detector-master/c66/VXLIB_types.h
 CMakeFiles/edline.dir/edlines/edlines.cpp.o
+ /home/dong/Downloads/line_detector-master/array/Array.h
+ /home/dong/Downloads/line_detector-master/array/Array/ArrayDefinitions.h
  /home/dong/Downloads/line_detector-master/c66/VXLIB_bufParams.h
  /home/dong/Downloads/line_detector-master/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h
  /home/dong/Downloads/line_detector-master/c66/VXLIB_types.h

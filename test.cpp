@@ -1,14 +1,14 @@
 #include <fstream>
 #include <iostream>
-#include <cstdint>
-#include<chrono>
+// #include <cstdint>
+// #include<chrono>
 #include<opencv2/core.hpp>
 #include<opencv2/imgproc.hpp>
 #include<opencv2/imgcodecs.hpp>
 #include<opencv2/highgui.hpp>
-#include <opencv2/line_descriptor.hpp>
+// #include <opencv2/line_descriptor.hpp>
 #include "edlines.h"
-
+#include "array/Array.h"
 
 int pWidth = 1024;
 int pHeight = 768;
@@ -110,11 +110,11 @@ int main()
 	int Flag = 0;
 	//Run Edline
 	int64_t cycle_us = 1e6 / 34;
-	auto start = std::chrono::high_resolution_clock::now();
+	// auto start = std::chrono::high_resolution_clock::now();
     Flag = EdgeDrawingLineDetector(input,W,H,scalex,scaley,Bbox,Lines);
-	auto elapsed_0 = std::chrono::high_resolution_clock::now() - start;
-	int64_t microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
-	cout<<"detect:"<<microseconds_0/1000.0<<"ms "<<endl;
+	// auto elapsed_0 = std::chrono::high_resolution_clock::now() - start;
+	// int64_t microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
+	// cout<<"detect:"<<microseconds_0/1000.0<<"ms "<<endl;
 	std::cout << Flag << std::endl;
 	for (int i = 0; i < Lines.size(); i++)
 	{
@@ -125,4 +125,5 @@ int main()
 	cv::waitKey(0);
 	return 0;
 	/* opencv 测试*/
+
 }

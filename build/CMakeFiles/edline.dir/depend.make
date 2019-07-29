@@ -6,6 +6,8 @@ CMakeFiles/edline.dir/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o: ../c66/VXLIB_sob
 CMakeFiles/edline.dir/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o: ../c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h
 CMakeFiles/edline.dir/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o: ../c66/VXLIB_types.h
 
+CMakeFiles/edline.dir/edlines/edlines.cpp.o: ../array/Array.h
+CMakeFiles/edline.dir/edlines/edlines.cpp.o: ../array/Array/ArrayDefinitions.h
 CMakeFiles/edline.dir/edlines/edlines.cpp.o: ../c66/VXLIB_bufParams.h
 CMakeFiles/edline.dir/edlines/edlines.cpp.o: ../c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h
 CMakeFiles/edline.dir/edlines/edlines.cpp.o: ../c66/VXLIB_types.h

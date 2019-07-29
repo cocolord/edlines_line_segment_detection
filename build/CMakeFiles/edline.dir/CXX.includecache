@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/dong/Downloads/line_detector-master/array/Array.h
+cstddef
+-
+Array/ArrayDefinitions.h
+/home/dong/Downloads/line_detector-master/array/Array/ArrayDefinitions.h
+
+/home/dong/Downloads/line_detector-master/array/Array/ArrayDefinitions.h
+cstring
+-
+
 /home/dong/Downloads/line_detector-master/c66/VXLIB_bufParams.h
 stdint.h
 -
@@ -27,8 +37,8 @@ edlines.h
 /home/dong/Downloads/line_detector-master/edlines/edlines.h
 list
 -
-array
--
+../array/Array.h
+/home/dong/Downloads/line_detector-master/array/Array.h
 ../c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h
 /home/dong/Downloads/line_detector-master/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h
 
@@ -42,6 +52,8 @@ stdint.h
 string.h
 -
 float.h
+-
+cstdio
 -
 ../c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h
 /home/dong/Downloads/line_detector-master/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h

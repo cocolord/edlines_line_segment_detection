@@ -7,6 +7,7 @@
 #include<stdint.h>
 #include<string.h>
 #include<float.h>
+#include<cstdio>
 #include "../c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h"
 
 // #include "image_defines.h"
