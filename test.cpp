@@ -112,8 +112,8 @@ int main()
 	//Run Edline
 	int64_t cycle_us = 1e6 / 34;
 	auto start = std::chrono::high_resolution_clock::now();
-	line_float_t *lines_buf = NULL;/*[MAX_LINE_BUFFER_SIZE];*/
-    Flag = EdgeDrawingLineDetector(input,W,H,scalex,scaley,Bbox,&lines_buf);
+	line_float_t lines_buf[MAX_LINE_BUFFER_SIZE] = {0,0,0,0};/*[MAX_LINE_BUFFER_SIZE];*/
+    Flag = EdgeDrawingLineDetector(input,W,H,scalex,scaley,Bbox,lines_buf);
 	auto elapsed_0 = std::chrono::high_resolution_clock::now() - start;
 	int64_t microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
 	cout<<"detect:"<<microseconds_0/1000.0<<"ms "<<endl;
@@ -123,7 +123,7 @@ int main()
 		cv::line(temp, cv::Point(lines_buf[i].startx, lines_buf[i].starty), cv::Point(lines_buf[i].endx, lines_buf[i].endy), cv::Scalar(0, 0, 255), 2);
 	}
 	cv::imshow("image1", temp);
-	std::cout<<"lines buf size"<<sizeof(lines_buf)/sizeof(lines_buf[0])<<std::endl;
+	free(lines_buf);
 	cv::waitKey(0);
 	return 0;
 	/* opencv 测试*/

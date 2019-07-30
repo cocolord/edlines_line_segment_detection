@@ -5,7 +5,7 @@
 #include "../array/Array.h"
 #include "../c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h"
 using namespace std;
-
+#define DEBUG 0
 
 #ifndef PI
 #define PI (3.1415926535897932384626433832795)
@@ -709,7 +709,7 @@ static void sobel_edge(ORIENT_CODE oriention, image_int8u_p src, image_int16s_p 
 }
 
 
-static void mcv_sobel(ORIENT_CODE oriention, image_int8u_p src, image_int16s_p dst)
+static void mcv_sobel(image_int8u_p src, image_int16s_p dstx,image_int16s_p dsty)
 {
 	/* Use Sobel function on DSP */
 	uint32_t out_size = src->xsize   * (src->ysize-2);
@@ -735,22 +735,15 @@ static void mcv_sobel(ORIENT_CODE oriention, image_int8u_p src, image_int16s_p d
 
 	//return params dst
 
-	switch (oriention)
-	{
-		case ORIENT_HORIZONAL:
-			//copy dst_x_cn to  dst
-			dst->data = dst_x_cn;
-			dst->xsize = dst_addr_x.dim_x;
-			dst->ysize = dst_addr_x.dim_y;
-			break;
-		
-		case  ORIENT_VERTICAL:
-			//copy dst_y_cn to  dst
-			dst->data = dst_y_cn;
-			dst->xsize = dst_addr_y.dim_x;
-			dst->ysize = dst_addr_y.dim_y;
-			break;
-	}
+	//copy dst_x_cn to  dst
+	dstx->data = dst_x_cn;
+	dstx->xsize = dst_addr_x.dim_x;
+	dstx->ysize = dst_addr_x.dim_y;
+
+	//copy dst_y_cn to  dst
+	dsty->data = dst_y_cn;
+	dsty->xsize = dst_addr_y.dim_x;
+	dsty->ysize = dst_addr_y.dim_y;
 	/* Use Sobel function on DSP */
 
 
@@ -1181,8 +1174,7 @@ int EDLineDetector::EdgeDrawing(image_int8u_p image, EdgeChains &edgeChains, boo
 		pAnchorY_ = new unsigned int[edgePixelArraySize];
 	}
 
-	mcv_sobel(ORIENT_HORIZONAL, image, dxImg_);
-	mcv_sobel(ORIENT_VERTICAL, image, dyImg_);
+	mcv_sobel(image, dxImg_,dyImg_);
 
 	//compute gradient and direction images
 	image_int16s_p dxABS_m = NULL, dyABS_m = NULL;
@@ -2923,7 +2915,7 @@ int _edge_drawing_line_detector(unsigned char *src, int w, int h,
 
 */
 int EdgeDrawingLineDetector(unsigned char *src, int w, int h,
-	float scaleX, float scaleY, boundingbox_t bbox, line_float_t** lines_buf)
+	float scaleX, float scaleY, boundingbox_t bbox, line_float_t lines_buf[500])
 {
 	std::vector<line_float_t> lines;
 	if (src == NULL)
@@ -2939,8 +2931,9 @@ int EdgeDrawingLineDetector(unsigned char *src, int w, int h,
 	
 	int flag = _edge_drawing_line_detector(src, w, h,
 		scaleX, scaleY, bbox, lines);
-	*lines_buf = (line_float_t *) malloc(sizeof(line_float_t)*lines.size());
-	for(int i = 0;i<lines.size();i++) (*lines_buf)[i] = lines[i];
-	for(int i = 0;i<lines.size();i++) std::cout<<(*lines_buf)[i].endx;
+	for(int i = 0;i<lines.size();i++) (lines_buf)[i] = lines[i];
+	if (DEBUG){
+		for(int i = 0;i<lines.size();i++) std::cout<<(lines_buf)[i].endx<<" ";
+	}
 	return flag;
 }
