@@ -105,9 +105,9 @@ int main()
 	std::vector<line_float_t> Lines;
 	//左上角是坐标原点
 	//用法和cv::rect一样
-	boundingbox_t Bbox = { 0,100,W,H-100 };
-	float scalex =1.0;
-	float scaley =1.0;
+	boundingbox_t Bbox = { 0,150,W,H-150 };
+	float scalex = 0.5;
+	float scaley = 0.5;
 	int Flag = 0;
 	//Run Edline
 	int64_t cycle_us = 1e6 / 34;
@@ -117,13 +117,27 @@ int main()
 	auto elapsed_0 = std::chrono::high_resolution_clock::now() - start;
 	int64_t microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
 	cout<<"detect:"<<microseconds_0/1000.0<<"ms "<<endl;
+	auto bd = cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor();
+    std::vector<cv::line_descriptor::KeyLine> lines;
+	auto roi_vp  = cv::Rect(0, 100, W, H-100);
+    cv::Mat mask_vp_ = cv::Mat::zeros(H, W, CV_8UC1);
+    mask_vp_(roi_vp).setTo(255);
+
+	cv::Mat mask = /*mask_ar_ &*/ mask_vp_;
+	cv::Mat src_roi(img_raw_.size(), CV_8UC1, cv::Scalar(0));
+
+	img_raw_.copyTo(src_roi, mask);
+	elapsed_0 = std::chrono::high_resolution_clock::now() - start;
+	bd->detect(src_roi, lines, mask);
+	microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
+	cout<<"OPENCV detect:"<<microseconds_0/1000.0<<"ms "<<endl;
+	
 	std::cout << Flag << std::endl;
 	for (int i = 0; i < sizeof(lines_buf)/sizeof(line_float_t); i++)
 	{
 		cv::line(temp, cv::Point(lines_buf[i].startx, lines_buf[i].starty), cv::Point(lines_buf[i].endx, lines_buf[i].endy), cv::Scalar(0, 0, 255), 2);
 	}
 	cv::imshow("image1", temp);
-	free(lines_buf);
 	cv::waitKey(0);
 	return 0;
 	/* opencv 测试*/

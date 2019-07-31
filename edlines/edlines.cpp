@@ -5,7 +5,7 @@
 #include "../array/Array.h"
 #include "../c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h"
 using namespace std;
-#define DEBUG 0
+#define DEBUG 1
 
 #ifndef PI
 #define PI (3.1415926535897932384626433832795)
@@ -174,7 +174,7 @@ struct LineChains{
 	unsigned int numOfLines;//the number of lines whose length are larger than minLineLen; numOfLines < sId.size;
 };
 
-typedef  std::list<Pixel> PixelChain;//each edge is a pixel chain
+// typedef  std::list<Pixel> PixelChain;//each edge is a pixel chain
 
  
 struct EDLineParam{
@@ -2571,8 +2571,11 @@ static image_int8u_p gaussian_sampler_byte_bbox(image_int8u_p in, boundingbox_t 
 	M = (unsigned int)ceil(bbox.height * scale.v);
 
 	aux = new_image_float(N, bbox.height);
-	out = new_image_int8u(N, M);
-
+	out = new_image_int8u(N, M);	
+	// if(DEBUG){
+	// 	out->data = in->data;
+	// 	return out;
+	// }
 	/* sigma, kernel size and memory for the kernel */
 	//sigma = scale < 1.f ? sigma_scale * iscale : sigma_scale;
 	sigma.u = (scale.u < 1.f) ? (sigma_scale * iscale.u) : (sigma_scale);
@@ -2590,7 +2593,7 @@ static image_int8u_p gaussian_sampler_byte_bbox(image_int8u_p in, boundingbox_t 
 	/* auxiliary float image size variables */
 	float_x_size = (int)(2 * bbox.width);
 	float_y_size = (int)(2 * bbox.height);
-
+	
 	/* First subsampling: x axis */
 	for (x = 0; x < aux->xsize; x++)
 	{
@@ -2602,20 +2605,21 @@ static image_int8u_p gaussian_sampler_byte_bbox(image_int8u_p in, boundingbox_t 
 		{
 			sum = 0.f;
 			offy = (y + bbox.y) * in->xsize;
-			for (i = 0; i < kernel_x->dim; i++)
-			{
-				j = xc - _w + i;
-				/* symmetry boundary condition */
-				while (j < 0) j += float_x_size;
-				while (j >= float_x_size) j -= float_x_size;
-				if (j >= (int)bbox.width) j = float_x_size - 1 - j;
+			// if(!DEBUG){
+				for (i = 0; i < kernel_x->dim; i++)
+				{
+					j = xc - _w + i;
+					/* symmetry boundary condition */
+					while (j < 0) j += float_x_size;
+					while (j >= float_x_size) j -= float_x_size;
+					if (j >= (int)bbox.width) j = float_x_size - 1 - j;
 
-				sum += in->data[(j + bbox.x) + offy] * kernel_x->values[i];
-			}
+					sum += in->data[(j + bbox.x) + offy] * kernel_x->values[i];
+				}
+			// }
 			aux->data[x + y * aux->xsize] = sum;
 		}
 	}
-
 	/* Second subsampling: y axis */
 	for (y = 0; y < out->ysize; y++)
 	{
@@ -2625,20 +2629,23 @@ static image_int8u_p gaussian_sampler_byte_bbox(image_int8u_p in, boundingbox_t 
 
 		for (x = 0; x < out->xsize; x++)
 		{
-			sum = 0.0f;
-			for (i = 0; i < kernel_y->dim; i++)
-			{
-				j = yc - _h + i;
-				/* symmetry boundary condition */
-				while (j < 0) j += float_y_size;
-				while (j >= float_y_size) j -= float_y_size;
-				if (j >= (int)bbox.height) j = float_y_size - 1 - j;
+			// if(!DEBUG){
+				sum = 0.0f;
+				for (i = 0; i < kernel_y->dim; i++)
+				{
+					j = yc - _h + i;
+					/* symmetry boundary condition */
+					while (j < 0) j += float_y_size;
+					while (j >= float_y_size) j -= float_y_size;
+					if (j >= (int)bbox.height) j = float_y_size - 1 - j;
 
-				sum += aux->data[x + j * aux->xsize] * kernel_y->values[i];
-			}
+					sum += aux->data[x + j * aux->xsize] * kernel_y->values[i];
+				}
+			// }
 			out->data[x + y * out->xsize] = (unsigned char)(sum + ROUND);
 		}
 	}
+
 
 	/* free memory */
 	free_ntuple_list(kernel_x);
@@ -2854,10 +2861,10 @@ int LineDescriptor::Run(float scaleX, float scaleY, boundingbox_t bbox,
 
 	gs_scale.u = scaleX;
 	gs_scale.v = scaleY;
-	sigma_scale = 0.6f;
+	sigma_scale = 1.0f;
+	// memcpy(blur,image,sizeof(image)*sizeof(image_int8u_p));
 
 	blur = gaussian_sampler_byte_bbox(image, bbox, gs_scale, sigma_scale);
-
 	if (ScaledKeyLines(blur, keyLines)){
 		delete[]blur->data;
 		delete[]blur;
@@ -2881,9 +2888,9 @@ int _edge_drawing_line_detector(unsigned char *src, int w, int h,
 	image_int8u_p _src = NULL;
 	LineDescriptor lineDesc;
 	ScaleLineSet   lineVec;
-
+	
 	_src = new_image_int8u_ptr(w, h, src);
-
+	// edl.EDline(_src);
 	if (lineDesc.Run(scaleX, scaleY, bbox, _src, lineVec))
 		return 1;
 
@@ -2932,8 +2939,9 @@ int EdgeDrawingLineDetector(unsigned char *src, int w, int h,
 	int flag = _edge_drawing_line_detector(src, w, h,
 		scaleX, scaleY, bbox, lines);
 	for(int i = 0;i<lines.size();i++) (lines_buf)[i] = lines[i];
+	cout<<lines.size()<<endl;
 	if (DEBUG){
-		for(int i = 0;i<lines.size();i++) std::cout<<(lines_buf)[i].endx<<" ";
+		// for(int i = 0;i<lines.size();i++) std::cout<<(lines_buf)[i].endx<<" ";
 	}
 	return flag;
 }
