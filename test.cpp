@@ -87,7 +87,7 @@ int main()
 
 	/* 用opencv测试 */
     cv::Mat image;
-	image = cv::imread("/home/dong/Downloads/line_detector-master/2019-05-06_10-55-52_00016509.bmp");
+	image = cv::imread("/home/dong/Downloads/line_detector-master/2019-05-06_10-55-52_00016518.bmp");
 	// cv::cvtColor(image, gray_image, CV_BGR2GRAY);
 	int W = image.cols *0.5;
 	int H = image.rows *0.5;
@@ -105,9 +105,9 @@ int main()
 	std::vector<line_float_t> Lines;
 	//左上角是坐标原点
 	//用法和cv::rect一样
-	boundingbox_t Bbox = { 0,150,W,H-150 };
-	float scalex = 0.5;
-	float scaley = 0.5;
+	boundingbox_t Bbox = { 0,100,W,H-100 };
+	float scalex = 1.1;
+	float scaley = 1.1;
 	int Flag = 0;
 	//Run Edline
 	int64_t cycle_us = 1e6 / 34;
@@ -133,6 +133,15 @@ int main()
 	cout<<"OPENCV detect:"<<microseconds_0/1000.0<<"ms "<<endl;
 	
 	std::cout << Flag << std::endl;
+
+	cv::Mat temp1;
+	temp.copyTo(temp1);
+	for (int i = 0; i < lines.size(); i++)
+	{
+		cv::line(temp1, cv::Point(lines[i].startPointX, lines[i].startPointY), cv::Point(lines[i].endPointX, lines[i].endPointY), cv::Scalar(0, 0, 255), 2);
+	}
+	cv::imshow("image opencv",temp1);
+
 	for (int i = 0; i < sizeof(lines_buf)/sizeof(line_float_t); i++)
 	{
 		cv::line(temp, cv::Point(lines_buf[i].startx, lines_buf[i].starty), cv::Point(lines_buf[i].endx, lines_buf[i].endy), cv::Scalar(0, 0, 255), 2);

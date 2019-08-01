@@ -6,4 +6,6 @@ CMakeFiles/edlines.dir/test.cpp.o
  ../c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.h
  ../c66/VXLIB_types.h
  ../edlines/edlines.h
+ /home/dong/Downloads/line_detector-master/array/Array.h
+ /home/dong/Downloads/line_detector-master/array/Array/ArrayDefinitions.h
  /home/dong/Downloads/line_detector-master/test.cpp
