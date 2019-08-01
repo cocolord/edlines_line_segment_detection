@@ -1,2 +1,0 @@
-/usr/bin/ar qc libedline.a  CMakeFiles/edline.dir/edlines/edlines.cpp.o CMakeFiles/edline.dir/c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c.o
-/usr/bin/ranlib libedline.a
