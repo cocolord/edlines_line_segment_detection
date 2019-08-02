@@ -2591,6 +2591,7 @@ static image_int8u_p gaussian_sampler_byte_bbox(image_int8u_p in, boundingbox_t 
 	kernel_y = new_ntuple_list(ny);
 
 	/* auxiliary float image size variables */
+	//kernel 的上下两行
 	float_x_size = (int)(2 * bbox.width);
 	float_y_size = (int)(2 * bbox.height);
 	
@@ -2606,8 +2607,10 @@ static image_int8u_p gaussian_sampler_byte_bbox(image_int8u_p in, boundingbox_t 
 			sum = 0.f;
 			offy = (y + bbox.y) * in->xsize;
 			// if(!DEBUG){
+				//guassian blur
 				for (i = 0; i < kernel_x->dim; i++)
 				{
+					//kernel内的像素
 					j = xc - _w + i;
 					/* symmetry boundary condition */
 					while (j < 0) j += float_x_size;
@@ -2617,6 +2620,7 @@ static image_int8u_p gaussian_sampler_byte_bbox(image_int8u_p in, boundingbox_t 
 					sum += in->data[(j + bbox.x) + offy] * kernel_x->values[i];
 				}
 			// }
+			//卷鸡和都给到中间的位置
 			aux->data[x + y * aux->xsize] = sum;
 		}
 	}

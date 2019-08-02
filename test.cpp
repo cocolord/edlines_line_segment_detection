@@ -6,7 +6,7 @@
 #include<opencv2/imgproc.hpp>
 #include<opencv2/imgcodecs.hpp>
 #include<opencv2/highgui.hpp>
-#include <opencv2/line_descriptor.hpp>
+// #include <opencv2/line_descriptor.hpp>
 #include "edlines.h"
 #include "array/Array.h"
 
@@ -117,30 +117,30 @@ int main()
 	auto elapsed_0 = std::chrono::high_resolution_clock::now() - start;
 	int64_t microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
 	cout<<"detect:"<<microseconds_0/1000.0<<"ms "<<endl;
-	auto bd = cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor();
-    std::vector<cv::line_descriptor::KeyLine> lines;
-	auto roi_vp  = cv::Rect(0, 100, W, H-100);
-    cv::Mat mask_vp_ = cv::Mat::zeros(H, W, CV_8UC1);
-    mask_vp_(roi_vp).setTo(255);
+	// auto bd = cv::line_descriptor::BinaryDescriptor::createBinaryDescriptor();
+    // std::vector<cv::line_descriptor::KeyLine> lines;
+	// auto roi_vp  = cv::Rect(0, 100, W, H-100);
+    // cv::Mat mask_vp_ = cv::Mat::zeros(H, W, CV_8UC1);
+    // mask_vp_(roi_vp).setTo(255);
 
-	cv::Mat mask = /*mask_ar_ &*/ mask_vp_;
-	cv::Mat src_roi(img_raw_.size(), CV_8UC1, cv::Scalar(0));
+	// cv::Mat mask = /*mask_ar_ &*/ mask_vp_;
+	// cv::Mat src_roi(img_raw_.size(), CV_8UC1, cv::Scalar(0));
 
-	img_raw_.copyTo(src_roi, mask);
-	elapsed_0 = std::chrono::high_resolution_clock::now() - start;
-	bd->detect(src_roi, lines, mask);
-	microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
-	cout<<"OPENCV detect:"<<microseconds_0/1000.0<<"ms "<<endl;
+	// img_raw_.copyTo(src_roi, mask);
+	// elapsed_0 = std::chrono::high_resolution_clock::now() - start;
+	// bd->detect(src_roi, lines, mask);
+	// microseconds_0 = std::chrono::duration_cast<std::chrono::microseconds>(elapsed_0).count();
+	// cout<<"OPENCV detect:"<<microseconds_0/1000.0<<"ms "<<endl;
 	
-	std::cout << Flag << std::endl;
+	// std::cout << Flag << std::endl;
 
-	cv::Mat temp1;
-	temp.copyTo(temp1);
-	for (int i = 0; i < lines.size(); i++)
-	{
-		cv::line(temp1, cv::Point(lines[i].startPointX, lines[i].startPointY), cv::Point(lines[i].endPointX, lines[i].endPointY), cv::Scalar(0, 0, 255), 2);
-	}
-	cv::imshow("image opencv",temp1);
+	// cv::Mat temp1;
+	// temp.copyTo(temp1);
+	// for (int i = 0; i < lines.size(); i++)
+	// {
+	// 	cv::line(temp1, cv::Point(lines[i].startPointX, lines[i].startPointY), cv::Point(lines[i].endPointX, lines[i].endPointY), cv::Scalar(0, 0, 255), 2);
+	// }
+	// cv::imshow("image opencv",temp1);
 
 	for (int i = 0; i < sizeof(lines_buf)/sizeof(line_float_t); i++)
 	{
