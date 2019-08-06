@@ -8,7 +8,6 @@
 #include<opencv2/highgui.hpp>
 // #include <opencv2/line_descriptor.hpp>
 #include "edlines.h"
-#include "array/Array.h"
 
 #define MAX_LINE_BUFFER_SIZE 500
 int pWidth = 1024;
@@ -106,8 +105,8 @@ int main()
 	//左上角是坐标原点
 	//用法和cv::rect一样
 	boundingbox_t Bbox = { 0,100,W,H-100 };
-	float scalex = 1.1;
-	float scaley = 1.1;
+	float scalex = 1.0;
+	float scaley = 1.0;
 	int Flag = 0;
 	//Run Edline
 	int64_t cycle_us = 1e6 / 34;
