@@ -171,7 +171,7 @@ struct SingleLineInfo
 //用结构题数组代替
 typedef std::vector<SingleLineInfo> LineSet;
 
-typedef std::vector<LineSet> ScaleLineSet;//each element in ScaleLineSet is a vector of lines which corresponds the same line detected in different scaled images.
+// typedef std::vector<LineSet> ScaleLineSet;//each element in LineSet is a vector of lines which corresponds the same line detected in different scaled images.
 
  
 struct EDLineParam{
@@ -443,18 +443,18 @@ public:
 
 	/* Interface.*/
 	int Run(float scaleX, float scaleY, boundingbox_t bbox,
-		image_int8u_p image, ScaleLineSet & keyLines);
+		image_int8u_p image, LineSet & keyLines);
 
 private:
 
 	/*This function is used to detect lines from multi-scale images.*/
-	int ScaledKeyLines(image_int8u_p image, ScaleLineSet &keyLines);
+	int ScaledKeyLines(image_int8u_p image, LineSet &keyLines);
 
 	/*This function is used to get numbers of pixels in a line from image.*/
 	int GetLinePixelsNums(float startX, float startY, float endX, float endY);
 
 	/*This function is used to get information of lines from downsampled image.*/
-	void InverseGaussianSamplerLines(pixel_float_t gs_scale, ScaleLineSet &keyLines);
+	void InverseGaussianSamplerLines(pixel_float_t gs_scale, LineSet &keyLines);
 
 
 

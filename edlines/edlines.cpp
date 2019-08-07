@@ -1943,7 +1943,7 @@ LineDescriptor::~LineDescriptor(){
 /*Line detection method: element in keyLines[i] includes a set of lines which is the same line
 * detected in different scaled images.
 */
-int LineDescriptor::ScaledKeyLines(image_int8u_p image, ScaleLineSet &keyLines)
+int LineDescriptor::ScaledKeyLines(image_int8u_p image, LineSet &keyLines)
 {
 	unsigned int numOfFinalLine = 0;
 
@@ -2030,8 +2030,8 @@ int LineDescriptor::ScaledKeyLines(image_int8u_p image, ScaleLineSet &keyLines)
 			singleLine.endPointX = e1;
 			singleLine.endPointY = e2;
 		}
-		tempID = scaledLines[lineID].lineIDInScaleLineVec;
-		keyLines[tempID].push_back(singleLine);
+		// tempID = scaledLines[lineID].lineIDInScaleLineVec;
+		keyLines.push_back(singleLine);
 	}
 
 	return 0;
@@ -2328,17 +2328,17 @@ int LineDescriptor::GetLinePixelsNums(float startX, float startY, float endX, fl
 }
 
 
-static void InverseBoundingBoxLines(boundingbox_t bbox, ScaleLineSet & keyLines)
+static void InverseBoundingBoxLines(boundingbox_t bbox, LineSet & keyLines)
 {
 	int k, nsize;
 	nsize = (int)keyLines.size();
 
 	for (k = 0; k < nsize; k++)
 	{
-		keyLines[k][0].startPointX += bbox.x;
-		keyLines[k][0].startPointY += bbox.y;
-		keyLines[k][0].endPointX += bbox.x;
-		keyLines[k][0].endPointY += bbox.y;
+		keyLines[k].startPointX += bbox.x;
+		keyLines[k].startPointY += bbox.y;
+		keyLines[k].endPointX += bbox.x;
+		keyLines[k].endPointY += bbox.y;
 
 	}
 
@@ -2346,7 +2346,7 @@ static void InverseBoundingBoxLines(boundingbox_t bbox, ScaleLineSet & keyLines)
 
 
 /*This function is used to get information of lines from downsampled image.*/
-void LineDescriptor::InverseGaussianSamplerLines(pixel_float_t gs_scale, ScaleLineSet & keyLines)
+void LineDescriptor::InverseGaussianSamplerLines(pixel_float_t gs_scale, LineSet & keyLines)
 {
 	float iscale_u, iscale_v;
 	float delta_u, delta_v;
@@ -2361,18 +2361,18 @@ void LineDescriptor::InverseGaussianSamplerLines(pixel_float_t gs_scale, ScaleLi
 	{
 		for (k = 0; k < nsize; k++)
 		{
-			keyLines[k][0].startPointX *= iscale_u;
-			keyLines[k][0].startPointY *= iscale_v;
-			keyLines[k][0].endPointX *= iscale_u;
-			keyLines[k][0].endPointY *= iscale_v;
+			keyLines[k].startPointX *= iscale_u;
+			keyLines[k].startPointY *= iscale_v;
+			keyLines[k].endPointX *= iscale_u;
+			keyLines[k].endPointY *= iscale_v;
 
-			delta_u = keyLines[k][0].endPointX - keyLines[k][0].startPointX;
-			delta_v = keyLines[k][0].endPointY - keyLines[k][0].startPointY;
+			delta_u = keyLines[k].endPointX - keyLines[k].startPointX;
+			delta_v = keyLines[k].endPointY - keyLines[k].startPointY;
 
-			keyLines[k][0].direction = atan2(delta_v, delta_u);
-			keyLines[k][0].lineLength = sqrt(delta_u*delta_u + delta_v*delta_v);
-			keyLines[k][0].numOfPixels = GetLinePixelsNums(keyLines[k][0].startPointX,
-				keyLines[k][0].startPointY, keyLines[k][0].endPointX, keyLines[k][0].endPointY);
+			keyLines[k].direction = atan2(delta_v, delta_u);
+			keyLines[k].lineLength = sqrt(delta_u*delta_u + delta_v*delta_v);
+			keyLines[k].numOfPixels = GetLinePixelsNums(keyLines[k].startPointX,
+				keyLines[k].startPointY, keyLines[k].endPointX, keyLines[k].endPointY);
 
 		}
 	}
@@ -2381,16 +2381,16 @@ void LineDescriptor::InverseGaussianSamplerLines(pixel_float_t gs_scale, ScaleLi
 	{
 		for (k = 0; k < nsize; k++)
 		{
-			keyLines[k][0].startPointY *= iscale_v;
-			keyLines[k][0].endPointY *= iscale_v;
+			keyLines[k].startPointY *= iscale_v;
+			keyLines[k].endPointY *= iscale_v;
 
-			delta_u = keyLines[k][0].endPointX - keyLines[k][0].startPointX;
-			delta_v = keyLines[k][0].endPointY - keyLines[k][0].startPointY;
+			delta_u = keyLines[k].endPointX - keyLines[k].startPointX;
+			delta_v = keyLines[k].endPointY - keyLines[k].startPointY;
 
-			keyLines[k][0].direction = atan2(delta_v, delta_u);
-			keyLines[k][0].lineLength = sqrt(delta_u*delta_u + delta_v*delta_v);
-			keyLines[k][0].numOfPixels = GetLinePixelsNums(keyLines[k][0].startPointX,
-				keyLines[k][0].startPointY, keyLines[k][0].endPointX, keyLines[k][0].endPointY);
+			keyLines[k].direction = atan2(delta_v, delta_u);
+			keyLines[k].lineLength = sqrt(delta_u*delta_u + delta_v*delta_v);
+			keyLines[k].numOfPixels = GetLinePixelsNums(keyLines[k].startPointX,
+				keyLines[k].startPointY, keyLines[k].endPointX, keyLines[k].endPointY);
 		}
 	}
 	else
@@ -2398,23 +2398,23 @@ void LineDescriptor::InverseGaussianSamplerLines(pixel_float_t gs_scale, ScaleLi
 	{
 		for (k = 0; k < nsize; k++)
 		{
-			keyLines[k][0].startPointX *= iscale_u;
-			keyLines[k][0].endPointX *= iscale_u;
+			keyLines[k].startPointX *= iscale_u;
+			keyLines[k].endPointX *= iscale_u;
 
-			delta_u = keyLines[k][0].endPointX - keyLines[k][0].startPointX;
-			delta_v = keyLines[k][0].endPointY - keyLines[k][0].startPointY;
+			delta_u = keyLines[k].endPointX - keyLines[k].startPointX;
+			delta_v = keyLines[k].endPointY - keyLines[k].startPointY;
 
-			keyLines[k][0].direction = atan2(delta_v, delta_u);
-			keyLines[k][0].lineLength = sqrt(delta_u*delta_u + delta_v*delta_v);
-			keyLines[k][0].numOfPixels = GetLinePixelsNums(keyLines[k][0].startPointX,
-				keyLines[k][0].startPointY, keyLines[k][0].endPointX, keyLines[k][0].endPointY);
+			keyLines[k].direction = atan2(delta_v, delta_u);
+			keyLines[k].lineLength = sqrt(delta_u*delta_u + delta_v*delta_v);
+			keyLines[k].numOfPixels = GetLinePixelsNums(keyLines[k].startPointX,
+				keyLines[k].startPointY, keyLines[k].endPointX, keyLines[k].endPointY);
 		}
 	}
 }
 
 
 int LineDescriptor::Run(float scaleX, float scaleY, boundingbox_t bbox,
-	image_int8u_p image, ScaleLineSet & keyLines)
+	image_int8u_p image, LineSet & keyLines)
 {
 	image_int8u_p blur = NULL;
 	pixel_float_t gs_scale;
@@ -2448,7 +2448,7 @@ int _edge_drawing_line_detector(unsigned char *src, int w, int h,
 	int k;
 	image_int8u_p _src = NULL;
 	LineDescriptor lineDesc;
-	ScaleLineSet   lineVec;
+	LineSet   lineVec;
 	
 	_src = new_image_int8u_ptr(w, h, src);
 	// edl.EDline(_src);
@@ -2457,8 +2457,8 @@ int _edge_drawing_line_detector(unsigned char *src, int w, int h,
 
 	for (k = 0; k < lineVec.size();k++)
 	{
-		line_float_t temp = {lineVec[k][0].startPointX, lineVec[k][0].startPointY,
-			lineVec[k][0].endPointX, lineVec[k][0].endPointY };
+		line_float_t temp = {lineVec[k].startPointX, lineVec[k].startPointY,
+			lineVec[k].endPointX, lineVec[k].endPointY };
 		lines.push_back(temp);
 	}
 
