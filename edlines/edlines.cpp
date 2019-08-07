@@ -1977,7 +1977,7 @@ int LineDescriptor::ScaledKeyLines(image_int8u_p image, LineSet &keyLines)
 	bool shouldChange;
 	//Reorganize the detected lines into keyLines
 	keyLines.clear();
-	keyLines.resize(lineIDInScaleLineVec);
+	keyLines.reserve(lineIDInScaleLineVec);
 
 	SingleLineInfo singleLine;
 	for (unsigned int lineID = 0; lineID < numOfFinalLine; lineID++){
@@ -2426,12 +2426,15 @@ int LineDescriptor::Run(float scaleX, float scaleY, boundingbox_t bbox,
 	// memcpy(blur,image,sizeof(image)*sizeof(image_int8u_p));
 
 	blur = gaussian_sampler_byte_bbox(image, bbox, gs_scale, sigma_scale);
+
+	// cout<<"keyLines"<<keyLines.size()<<endl;
 	if (ScaledKeyLines(blur, keyLines)){
 		delete[]blur->data;
 		delete[]blur;
 		return 1;
 	}
 
+	// cout<<"keyLines"<<keyLines.size()<<endl;
 	InverseGaussianSamplerLines(gs_scale, keyLines);
 
 	InverseBoundingBoxLines(bbox, keyLines);
@@ -2454,7 +2457,7 @@ int _edge_drawing_line_detector(unsigned char *src, int w, int h,
 	// edl.EDline(_src);
 	if (lineDesc.Run(scaleX, scaleY, bbox, _src, lineVec))
 		return 1;
-
+	// cout<<"lineVec.size "<<lineVec.size()<<endl;
 	for (k = 0; k < lineVec.size();k++)
 	{
 		line_float_t temp = {lineVec[k].startPointX, lineVec[k].startPointY,
@@ -2500,7 +2503,7 @@ int EdgeDrawingLineDetector(unsigned char *src, int w, int h,
 	int flag = _edge_drawing_line_detector(src, w, h,
 		scaleX, scaleY, bbox, lines);
 	for(int i = 0;i<lines.size();i++) (lines_buf)[i] = lines[i];
-	// cout<<lines.size()<<endl;
+	// std::cout<<lines.size()<<std::endl;
 	// if (DEBUG){
 	// 	// for(int i = 0;i<lines.size();i++) std::cout<<(lines_buf)[i].endx<<" ";
 	// }

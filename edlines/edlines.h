@@ -1,7 +1,7 @@
 
 #ifndef __EDGE_DRAWING_LINE_H_
 #define __EDGE_DRAWING_LINE_H_
-
+#include<iostream>
 #include <vector>
 #include<cmath>
 #include<stdint.h>

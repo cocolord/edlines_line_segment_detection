@@ -109,6 +109,21 @@ int main()
 	float scaley = 1.0;
 	int Flag = 0;
 	//Run Edline
+
+	LineDescriptor * ld  = new LineDescriptor; 
+	LineSet Lineset;
+
+    // unsigned char* input = new unsigned char[image_size];
+    image_int8u_p int8u_image = new image_int8u_s[1];
+    int8u_image->data = input;
+    int8u_image->xsize = W;
+    int8u_image->ysize = H;
+    ld->Run(1,1,Bbox,int8u_image,Lineset);
+	for (int i = 0; i < Lineset.size(); i++)
+	{
+		cv::line(temp, cv::Point(Lineset[i].startPointX, Lineset[i].startPointY), cv::Point(Lineset[i].endPointX, Lineset[i].endPointY), cv::Scalar(0, 0, 255), 2);
+	}
+	cv::imshow("image1", temp);
 	int64_t cycle_us = 1e6 / 34;
 	auto start = std::chrono::high_resolution_clock::now();
 	line_float_t lines_buf[MAX_LINE_BUFFER_SIZE] = {0,0,0,0};/*[MAX_LINE_BUFFER_SIZE];*/
@@ -141,11 +156,11 @@ int main()
 	// }
 	// cv::imshow("image opencv",temp1);
 
-	for (int i = 0; i < sizeof(lines_buf)/sizeof(line_float_t); i++)
-	{
-		cv::line(temp, cv::Point(lines_buf[i].startx, lines_buf[i].starty), cv::Point(lines_buf[i].endx, lines_buf[i].endy), cv::Scalar(0, 0, 255), 2);
-	}
-	cv::imshow("image1", temp);
+	// for (int i = 0; i < sizeof(lines_buf)/sizeof(line_float_t); i++)
+	// {
+	// 	cv::line(temp, cv::Point(lines_buf[i].startx, lines_buf[i].starty), cv::Point(lines_buf[i].endx, lines_buf[i].endy), cv::Scalar(0, 0, 255), 2);
+	// }
+	// cv::imshow("image1", temp);
 	cv::waitKey(0);
 	return 0;
 	/* opencv 测试*/
