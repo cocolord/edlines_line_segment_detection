@@ -26,23 +26,5 @@ int __EdgeDrawingLineDetector__(unsigned char *src, int w, int h,float scaleX, s
 
 
 
-#
+## Usage
 g++ -O3 -std=c++11 test.cpp array/Array/Array.cpp edlines/edlines.cpp c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c -o test -Iedlines/ -Ic66/ -I/array \`pkg-config --cflags --libs opencv\`
-#
-To do list:
-1. C++ STL 用标准C替换
-
-2. 在ccs上测试
-
-
-
-Finished List:
-1. 图像流已经换成了一维数组
-
-2. DSP中的sobel函数替换源代码中的sobel函数
-
-3. 替换了STL的array
-
-4. OPENCV edline函数的效果对比
-
-5. gaussian_bbox 的参数需要调
