@@ -1,9 +1,9 @@
-__edge drawing line detector (edlines)__
+# edge drawing line detector (edlines)
 
-__All original dependencies have been removed. Code could be run  independently.__
+# All OpenCV dependencies have been removed. Code could be run  independently.
 
-edge drawing line detector(EDLines) with a scale in vertical and horizonal direction in boundingbox, respectively
-
+# Edge drawing line detector(EDLines) with a scale in vertical and horizonal direction in boundingbox, respectively
+# params 
 __EDLines__ Simple Interface with Scale in Boundingbox
 
     @param src         				image,single channel.
@@ -21,7 +21,7 @@ __EDLines__ Simple Interface with Scale in Boundingbox
     @param lines      				result.
 
     @return            				0:ok; 1:error
-                       
+   
 int __EdgeDrawingLineDetector__(unsigned char *src, int w, int h,float scaleX, scaleY, boundingbox_t bbox, std::vector<line_float_t> &lines);
 
 
