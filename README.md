@@ -1,8 +1,7 @@
-# edge drawing line detector (edlines)
+# Edge drawing line detector (edlines)
 
-# All OpenCV dependencies have been removed. Code could be run  independently.
-
-# Edge drawing line detector(EDLines) with a scale in vertical and horizonal direction in boundingbox, respectively
+All OpenCV dependencies have been removed. Code could be run  independently.  
+Edge drawing line detector(EDLines) with a scale in vertical and horizonal direction in boundingbox, respectively
 # params 
 __EDLines__ Simple Interface with Scale in Boundingbox
 
