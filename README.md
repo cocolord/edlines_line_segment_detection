@@ -26,8 +26,10 @@ int __EdgeDrawingLineDetector__(unsigned char *src, int w, int h,float scaleX, s
 
 
 ## Usage
+### if test with opencv lib
 g++ -O3 -std=c++11 test.cpp array/Array/Array.cpp edlines/edlines.cpp c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c -o test -Iedlines/ -Ic66/ -I/array \`pkg-config --cflags --libs opencv\`
-
+### if test without opencv dependencies
+g++ -O3 -std=c++11 test.cpp array/Array/Array.cpp edlines/edlines.cpp c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c -o test -Iedlines/ -Ic66/ -I/array
 
 ## todo
 Codes need to be refactored
