@@ -1,8 +1,10 @@
 # Edge drawing line detector (edlines)
 
-All OpenCV dependencies have been removed. Code could be run  independently.  
+All OpenCV dependencies have been removed. Code could be run  independently following usage instructio.    
 Edge drawing line detector(EDLines) with a scale in vertical and horizonal direction in boundingbox, respectively
-# params 
+
+## Parameters   
+
 __EDLines__ Simple Interface with Scale in Boundingbox
 
     @param src         				image,single channel.
@@ -26,7 +28,14 @@ int __EdgeDrawingLineDetector__(unsigned char *src, int w, int h,float scaleX, s
 
 
 ## Usage
-### if test with opencv lib
-g++ -O3 -std=c++11 test.cpp array/Array/Array.cpp edlines/edlines.cpp c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c -o test -Iedlines/ -Ic66/ -I/array \`pkg-config --cflags --libs opencv\`
-### if test without opencv dependencies
+
+### If test with opencv lib
+
+```bash  
+g++ -O3 -std=c++11 test.cpp array/Array/Array.cpp edlines/edlines.cpp c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c -o test -Iedlines/ -Ic66/ -I/array `pkg-config --cflags --libs opencv`
+```
+### If test without opencv dependencies
+
+```bash  
 g++ -O3 -std=c++11 test.cpp array/Array/Array.cpp edlines/edlines.cpp c66/VXLIB_sobel_3x3_i8u_o16s_o16s_cn.c -o test -Iedlines/ -Ic66/ -I/array
+```
