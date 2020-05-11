@@ -55,6 +55,7 @@ int main()
 		free(pBuf);
 		fclose(infile);
 		//如果不使用opencv库，目前不使用其他库对图像进行修改,outfile为空。
+		//你可以打印pBuf查看直线信息
 		fclose(outfile);
 
 	#elif TEST_EDLINE_WITH_OPENCV_LIB
